@@ -5,12 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ben's Bites Fund</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 2rem; line-height: 1.5; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.5;
+            background-color: #ffffff;
+        }
+
         h1 { margin-bottom: 0.5em; }
+
         .tagline { font-size: 1.2em; margin-top: 0; color: #555; }
+
+        .grid-bg {
+            background-image: repeating-linear-gradient(0deg, #e0e0e0 0, #e0e0e0 1px, transparent 1px, transparent 20px),
+                              repeating-linear-gradient(90deg, #e0e0e0 0, #e0e0e0 1px, transparent 1px, transparent 20px);
+        }
+
+        .toggle-btn {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .toggle-btn svg {
+            width: 24px;
+            height: 24px;
+        }
     </style>
 </head>
 <body>
+    <button id="gridToggle" class="toggle-btn" aria-label="Toggle grid background">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+            <path d="M3 3h7v7H3V3zm0 11h7v7H3v-7zm11-11h7v7h-7V3zm0 11h7v7h-7v-7z"/>
+        </svg>
+    </button>
     <h1>Ben's Bites Fund</h1>
     <p class="tagline">Backing the next generation of AI innovation.</p>
     <ul>
@@ -18,6 +50,12 @@
         <li>Strong network of founders and investors</li>
         <li>Community-driven approach to growth</li>
     </ul>
+    <script>
+        document.getElementById('gridToggle').addEventListener('click', function () {
+            document.body.classList.toggle('grid-bg');
+        });
+    </script>
+
     <h2>Follow Ben</h2>
     <ul>
         <li><a href="https://x.com/bentossell/" target="_blank" rel="noopener">X</a></li>
