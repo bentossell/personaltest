@@ -5,12 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ben's Bites Fund</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 2rem; line-height: 1.5; }
-        h1 { margin-bottom: 0.5em; }
-        .tagline { font-size: 1.2em; margin-top: 0; color: #555; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.5;
+            background-color: #fff;
+            color: #000;
+        }
+
+        body.dark {
+            background-color: #111;
+            color: #eee;
+        }
+
+        h1 {
+            margin-bottom: 0.5em;
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            margin-top: 0;
+            color: #555;
+        }
+
+        #theme-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: inherit;
+            padding: 0.25rem;
+        }
     </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+    <button id="theme-toggle" aria-label="Toggle theme" data-lucide="moon"></button>
     <h1>Ben's Bites Fund</h1>
     <p class="tagline">Backing the next generation of AI innovation.</p>
     <ul>
@@ -18,5 +51,29 @@
         <li>Strong network of founders and investors</li>
         <li>Community-driven approach to growth</li>
     </ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    body.classList.add('dark');
+                    toggle.setAttribute('data-lucide', 'sun');
+                } else {
+                    body.classList.remove('dark');
+                    toggle.setAttribute('data-lucide', 'moon');
+                }
+                lucide.createIcons();
+            }
+
+            toggle.addEventListener('click', function () {
+                const isDark = body.classList.contains('dark');
+                setTheme(isDark ? 'light' : 'dark');
+            });
+
+            setTheme(body.classList.contains('dark') ? 'dark' : 'light');
+        });
+    </script>
 </body>
 </html>
